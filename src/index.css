@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,100;0,400;0,700;1,100;1,600&family=Noto+Sans+JP:wght@100;300;400;500;700;800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,400;1,500;1,700;1,800&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,400;1,500&display=swap');
+
+
+
+@layer base {
+
+
+  html {
+
+
+    /* font-family: 'Roboto Condensed', sans-serif; */
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    cursor: pointer;
+  }
+}
+
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-Nature focus:outline-none focus:ring focus:ring-Nature focus:ring-opacity-75;
+  }
+
+.btn-secondary{
+  @apply mt-8 inline-block rounded border border-Nature  hover:bg-Nature px-12 py-3 text-sm font-medium text-Nature  hover:text-white focus:outline-none focus:ring active:text-white
+}
+  .container {
+    @apply mx-auto my-0 max-w-screen-xl px-4  sm:px-6 lg:px-8
+   
+
+  /* .nth-child{
+    @apply &>*:nth-child(odd):bg-gray-300 [&>*:nth-child(even)]:bg-white
+} */
+  } 
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+} */
+
+/* 
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} */
+/* 
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
