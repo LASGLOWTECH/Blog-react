@@ -24,12 +24,18 @@
 
 @layer components {
   .btn-primary {
-    @apply py-2 px-5 bg-violet-500 text-white font-semibold rounded-full shadow-md hover:bg-Nature focus:outline-none focus:ring focus:ring-Nature focus:ring-opacity-75;
+    @apply rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600;
   }
 
 .btn-secondary{
   @apply mt-8 inline-block rounded border border-Nature  hover:bg-Nature px-12 py-3 text-sm font-medium text-Nature  hover:text-white focus:outline-none focus:ring active:text-white
 }
+
+
+.btn-secondary2{
+  @apply mt-3 inline-block rounded border border-Nature  hover:bg-Nature px-4 py-2 text-sm font-medium text-Nature  hover:text-white focus:outline-none focus:ring active:text-white
+}
+
   .container {
     @apply mx-auto my-0 max-w-screen-xl px-4  sm:px-6 lg:px-8
    
@@ -55,6 +61,19 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media  (min-width: 1024px) {
+  .row-reverse-odd:nth-child(odd) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "image content";
+  }
+
+/* Default order for even posts */
+.row-reverse-odd:nth-child(even) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "content image";
+}}
 /* a {
   font-weight: 500;
   color: #646cff;

@@ -12,7 +12,7 @@ export default {
         secondarycolor:'#',
          Ashcolor: '#F3F4F6',
         Nature:'#0D9488',
-       
+       Darkash:'#374151'
 
        
       }

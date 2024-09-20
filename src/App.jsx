@@ -1,6 +1,6 @@
 // import { useState } from 'react'
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-
+import Write from "./pages/write";
 import Login from './pages/login'
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
@@ -24,17 +24,19 @@ const router = createBrowserRouter([
 
     children: [
       { path: "/", element: <Home />, },
-// {path:"/singleblog/:id",  element:<Single /> , }
-{path:"/singleblogs",  element:<Singleblog /> , }
+{path:"/singleblog/:id",  element:<Single /> , },
+// {path:"/singleblogs",  element:<Singleblog /> , },
 
-
+{ path: "/write", element: <Write/> }
     ],
   },
 
   { path: "/login", element: <Login /> },
 
 
-  { path: "/register", element: <Register/> }
+  { path: "/register", element: <Register/> },
+
+  
 
 
 

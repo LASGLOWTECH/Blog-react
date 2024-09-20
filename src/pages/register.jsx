@@ -1,13 +1,42 @@
-
+import axios from "axios";
+// import instance from "../axios.config";
+import { i } from "framer-motion/client";
+import { useState } from "react";
 import { BsEye } from "react-icons/bs";
 
 const Register = () => {
+    const[inputs, setInputs]=useState({
+        username:"",
+        email:"",
+        passsword:"",
+
+    })
+
+const handleChange=(e)=>{
+
+setInputs(prev=>({...prev, [e.target.name]:e.target.value}))
+}
+
+const handleSubmit= async (e)=>{
+    e.preventDefault()
+
+    try { 
+     
+        const res=await axios.post("/auth/register", inputs)
+console.log(res);
+
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+ 
+}
+
+
+console.log(inputs);
+
     return (
-
-
-
-
-
 
         <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-lg">
@@ -18,8 +47,25 @@ const Register = () => {
                     inventore quaerat mollitia?
                 </p>
 
-                <form action="#" className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+                <form onSubmit={handleSubmit} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
                     <p className="text-center  text-indigo-600 text-lg font-medium">Sign in to your account</p>
+
+                    <div>
+                        <label htmlFor="password" username="sr-only">Password</label>
+
+                        <div className="relative">
+                            <input
+                                type="prext"
+                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                placeholder="Enter username"
+                                onChange={handleChange}
+                                name="username"
+                                
+                            />
+
+                           
+                        </div>
+                    </div>
 
                     <div>
                         <label htmlFor="email" className="sr-only">Email</label>
@@ -29,6 +75,8 @@ const Register = () => {
                                 type="email"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter email"
+                                 onChange={handleChange}
+                                name="email"
                             />
 
                             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -58,6 +106,8 @@ const Register = () => {
                                 type="password"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
+                                 onChange={handleChange}
+                                name="password"
                             />
 
                             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
