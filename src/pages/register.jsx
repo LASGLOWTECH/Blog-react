@@ -1,40 +1,47 @@
-import axios from "axios";
-// import instance from "../axios.config";
-import { i } from "framer-motion/client";
+// import axios from "axios";
+import instance from "../axios.config";
+import { Link, useNavigate } from "react-router-dom";
+
+
+useNavigate
 import { useState } from "react";
 import { BsEye } from "react-icons/bs";
 
 const Register = () => {
-    const[inputs, setInputs]=useState({
-        username:"",
-        email:"",
-        passsword:"",
+    const [inputs, setInputs] = useState({
+        username: "",
+        email: "",
+        passsword: "",
 
     })
+    const navigate = useNavigate()
+    const [err, setErr] = useState(null)
+    console.log();
 
-const handleChange=(e)=>{
+    const handleChange = (e) => {
 
-setInputs(prev=>({...prev, [e.target.name]:e.target.value}))
-}
-
-const handleSubmit= async (e)=>{
-    e.preventDefault()
-
-    try { 
-     
-        const res=await axios.post("/auth/register", inputs)
-console.log(res);
-
-        
-    } catch (error) {
-        console.log(error);
-        
+        setInputs(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
- 
-}
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        try {
+
+            const res = await instance.post("/auth/register", inputs)
+            navigate("/login")
+            console.log(res);
 
 
-console.log(inputs);
+        } catch (error) {
+            setErr(error.response.data)
+
+        }
+
+    }
+
+
+    console.log(inputs);
 
     return (
 
@@ -47,11 +54,11 @@ console.log(inputs);
                     inventore quaerat mollitia?
                 </p>
 
-                <form onSubmit={handleSubmit} className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+                <form className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
                     <p className="text-center  text-indigo-600 text-lg font-medium">Sign in to your account</p>
 
                     <div>
-                        <label htmlFor="password" username="sr-only">Password</label>
+                        <label htmlFor="username">Password</label>
 
                         <div className="relative">
                             <input
@@ -60,10 +67,10 @@ console.log(inputs);
                                 placeholder="Enter username"
                                 onChange={handleChange}
                                 name="username"
-                                
+
                             />
 
-                           
+
                         </div>
                     </div>
 
@@ -75,7 +82,7 @@ console.log(inputs);
                                 type="email"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter email"
-                                 onChange={handleChange}
+                                onChange={handleChange}
                                 name="email"
                             />
 
@@ -106,22 +113,25 @@ console.log(inputs);
                                 type="password"
                                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
-                                 onChange={handleChange}
+                                onChange={handleChange}
                                 name="password"
                             />
 
                             <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                               <BsEye/>
+                                <BsEye />
                             </span>
                         </div>
                     </div>
 
-                    <button
+                    <button onClick={handleSubmit}
                         type="submit"
                         className="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white"
                     >
                         Sign in
                     </button>
+
+                    {err && <p className="text-red-500">{err} </p>}
+
 
                     <p className="text-center text-sm text-gray-500">
                         registered?
