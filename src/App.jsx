@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Register from "./pages/register";
-import Single from "./pages/singleblog";
+
 import Singleblog from "./pages/singleblogs";
 const Layout = () => {
   return (
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
 
     children: [
       { path: "/", element: <Home />, },
-{path:"/singleblog/:id",  element:<Single /> , },
-// {path:"/singleblogs",  element:<Singleblog /> , },
+{path:"/post/:id",  element:<Singleblog /> , },
+// {path:"/singleblogs",   element:<Singleblog /> , },
 
 { path: "/write", element: <Write/> }
     ],

@@ -34,7 +34,7 @@ const Register = () => {
 
 
         } catch (error) {
-            setErr(error.response.data)
+            setErr(error.res.data)
 
         }
 
@@ -58,7 +58,7 @@ const Register = () => {
                     <p className="text-center  text-indigo-600 text-lg font-medium">Sign in to your account</p>
 
                     <div>
-                        <label htmlFor="username">Password</label>
+                        <label htmlFor="username">User Name</label>
 
                         <div className="relative">
                             <input

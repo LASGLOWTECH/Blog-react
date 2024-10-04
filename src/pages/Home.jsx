@@ -1,11 +1,35 @@
 import Card from "../components/card";
+import instance from "../axios.config";
 
-import { posts } from "../components/blogdata";
-import { Link } from "react-router-dom";
+
+// import { posts } from "../components/blogdata";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 
 
 const Home = () => {
+  const cat = useLocation().search
+  console.log(cat);
+
+  const [posts, setPosts] = useState([])
+
+  const fetchDta = async () => {
+    try {
+      const res = await instance.get(`/posts${cat}`)
+      setPosts(res.data);
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+
+
+  useEffect(() => {
+    fetchDta()
+  }, [cat])
+
+
   return (
     <>
       <section className=" my-4 container">
@@ -13,8 +37,8 @@ const Home = () => {
 
 
           {posts.map((post) => (
-            <div className=" mt-3 row-reverse-odd md:space-y-12 grid grid-cols-1 lg:h-screen lg:grid-cols-2" key={post.id}>
-            
+            <div className=" mt-3 row-reverse-odd md:space-y-12 grid grid-cols-1 lg:h-screen lg:grid-cols-2" key={post.postid}>
+
 
               <div className="relative  z-10 lg:py-16">
                 <div className=" relative h-64 sm:h-80 lg:h-full">
@@ -22,7 +46,7 @@ const Home = () => {
                     src={post.img}
                     width={1280}
                     height={720}
-                    alt={post.id}
+                    alt={post.postid}
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
@@ -34,7 +58,7 @@ const Home = () => {
                 ></span>
 
                 <div className="p-8  sm:p-16 lg:p-24">
-                  <Link to={`/post/${post.id}`}>
+                  <Link to={`/post/${post.postid}`}>
                     <h2 className="md:text-2Xl text-gray-800 font-bold sm:text-3xl">
                       {post.title}
                     </h2>
@@ -42,12 +66,15 @@ const Home = () => {
                     <p className="mt-4 text-gray-600">
                       {post.descr}
                     </p>
-                    <a
-                      href="#"
+
+
+
+                    <button
+
                       className="btn-secondary"
                     >
                       READ BLOG
-                    </a>
+                    </button>
                   </Link>
 
 
@@ -66,7 +93,7 @@ const Home = () => {
       </section>
 
 
-      <Card />
+      {/* <Card /> */}
 
 
 
