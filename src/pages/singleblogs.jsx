@@ -53,10 +53,10 @@ const Singleblog = () => {
   }
 	
 
-  const handleDelete= async () =>{
+  const handleDelete= async () =>{ 
     try {
       const res = await instance.delete(`/posts/${postid}`)
-        const del= res.data
+        
       navigate("/")
         console.log(del);
     } catch (error) {
@@ -82,7 +82,7 @@ const Singleblog = () => {
 </h2>
 
              
-              <img src={post?.img} alt="singleimagr" width={50} height={50} className="my-2 rounded-full" />
+              <img src={post?.userImg} alt="singleimagr" width={50} height={50} className="my-2 rounded-full" />
               <p className=" mt-1 pb-6  text-gray-800 font-semibold  max-w-[740px]  text-lg text-centerfont-normal  ">{currentUser?.username}</p>
              
    </div>
@@ -106,14 +106,17 @@ const Singleblog = () => {
 <div className="flex flex-row  items-center justify-normal pt-3 ">
 
                  <p className="text-gray-800 font-medium text-base  ">Posted {moment(post.date).fromNow()}</p>
-                 
-                 
-                 {currentUser?.user=== post.user && 
+
+
+
+                  
+                 {currentUser.username=== post.username && 
                   <div className="flex flex-row  items-center justify-normal"> <BiTrash onClick={handleDelete} className="ms-4 fill-red-600 text-2xl" />
-                  <Link to={`/write?edit=2`}>
+                  <Link to={`/write?edit=2`} state={post}>
                      <BiEdit className="fill-Nature text-2xl " />
                    </Link>
                   </div>
+
  
                  }
                  
@@ -135,7 +138,7 @@ const Singleblog = () => {
 
 <h3 className="md:text-2Xl border  p-2  text-gray-800 font-medium sm:text-2xl">  You might also like</h3>
 
- <Menu/>
+ <Menu  cat={post.cat}/>
 
 
 </div>

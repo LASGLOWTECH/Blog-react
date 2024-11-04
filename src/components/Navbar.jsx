@@ -4,7 +4,8 @@ import React, { useContext } from 'react'
 
 // import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai"
-import { HiMiniBars3BottomRight } from "react-icons/hi2"
+import { HiMiniBars3BottomRight, HiPower } from "react-icons/hi2"
+
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { BiEdit } from "react-icons/bi";
 import { useState } from 'react'
@@ -28,7 +29,7 @@ export default function Navbar() {
     }
 
 
-    const navLinks = [{ link: 'Tech', path: "/?cat=tech" }, { link: 'Entertainment', path: "/?cat=Entertainment " }, { link: 'Design', path: "/?cat=Design" }, { link: 'Music', path: "/?cat=Music" },
+    const navLinks = [{ link: 'Tech', path: "/?cat=tech" }, { link: 'Entertainment', path: "/?cat=entertainment " }, { link: 'Design', path: "/?cat=design" }, { link: 'Music', path: "/?cat=music" },
 
     ]
     return (
@@ -53,7 +54,7 @@ export default function Navbar() {
                             return (
 
 
-                                <a href={links.path} className='text-gray-700 transition hover:text-Nature  px-2 font-medium tracking-wider text-lg ' key={links} >{links.link}</a>
+                                <a href={links.path} className='text-gray-700 transition hover:text-Nature  px-2 font-medium tracking-wider text-base ' key={links} >{links.link}</a>
 
 
                             )
@@ -64,7 +65,7 @@ export default function Navbar() {
 
                     <div className="  flex items-center space-x-2 callarea  rounded-medium px-4 py-1 ">
                         < span className="text-Nature">{currentUser?.username}</span>
-                        {currentUser ? (<BiLogOut onClick={logout} className=" rounded-full bg-Ashcolor  p-2 text-5xl font-bold text-Nature" />
+                        {currentUser ? (<HiPower onClick={logout} className=" rounded-full bg-Ashcolor  p-2 text-5xl font-bold text-Nature" />
                         ) :
                             <Link to={`/login`} >  < HiMiniUserCircle className=" rounded-full bg-Ashcolor  p-2 text-5xl font-bold text-Nature " />
 

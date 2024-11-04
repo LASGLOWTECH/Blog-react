@@ -4,7 +4,7 @@ import Write from "./pages/write";
 import Login from './pages/login'
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 import Register from "./pages/register";
 
 import Singleblog from "./pages/singleblogs";

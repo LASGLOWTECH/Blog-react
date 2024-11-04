@@ -4,17 +4,18 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 
-export const Menu = () => {
+export const Menu = ({cat}) => {
 
 
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
+   
 
     const fetchDta = async () => {
       try {
-        const res = await instance.get(`/posts`)
+        const res = await instance.get(`/posts/?cat=${cat}`)
         const posts= res.data
         setPosts(posts);
-        console.log(posts);
+        console.log(cat);
       } catch (error) {
         console.log(error);
   
